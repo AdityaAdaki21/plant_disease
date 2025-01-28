@@ -120,20 +120,20 @@ function classifyImage(model) {
 class DiseasePesticideManager {
     constructor() {
         this.pesticideRecommendations = {
-            'Bacterial Blight': ['Syngenta', 'Copper Fungicide 500'],
-            'Red Rot': ['BASF', 'Mancozeb 80 WP'],
-            'Blight': ['Dow AgroSciences', 'Bravo WeatherStik'],
-            'Common_Rust': ['Monsanto', 'Amistar 250SC'],
-            'Gray_Leaf_Spot,Healthy': ['BASF', 'Headline SC'],
-            'Bacterial blight': ['Syngenta', 'Kocide 2000'],
-            'curl_virus': ['Bayer CropScience', 'Confidor 200SL'],
-            'fussarium_wilt': ['Syngenta', 'Folicur EC'],
-            'Bacterial_blight': ['Syngenta', 'Kocide 2000'],
-            'Blast': ['Dow AgroSciences', 'Streptomycin 17WP'],
-            'Brownspot': ['BASF', 'Headline SC'],
-            'Tungro': ['Bayer CropScience', 'Actara 25WG'],
-            'septoria': ['Monsanto', 'Quadris 2.5 SC'],
-            'strip_rust': ['BASF', 'Folicur 430 SC']
+            'Bacterial Blight': ['Syngenta', 'Copper Fungicide 500', 'Bacterial Blight is a common disease affecting various plants, caused by bacteria.', 'Water-soaked lesions on leaves, wilting.', 'Use disease-free seeds, avoid overhead irrigation.', 'Copper Fungicide 500', 'Copper', 'Apply as a foliar spray every 7-10 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'Red Rot': ['BASF', 'Mancozeb 80 WP', 'Red Rot is a fungal disease that primarily affects sugarcane.', 'Red discoloration inside stalks, foul smell.', 'Plant resistant varieties and remove infected plants.', 'Mancozeb 80 WP', 'Mancozeb', 'Apply as a foliar spray every 10-15 days during the infection period.', 'Avoid contact with skin; wash hands thoroughly after use.'],
+            'Blight': ['Dow AgroSciences', 'Bravo WeatherStik', 'Blight is a plant disease characterized by rapid and complete chlorosis, browning, and death of plant tissues.', 'Brown spots on leaves, wilting.', 'Use resistant varieties, remove infected plants.', 'Bravo WeatherStik', 'Chlorothalonil', 'Apply as a foliar spray every 7-10 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'Common_Rust': ['Monsanto', 'Amistar 250SC', 'Common Rust is a fungal disease that affects maize and other crops.', 'Rust-colored pustules on leaves.', 'Use resistant varieties, apply fungicides.', 'Amistar 250SC', 'Azoxystrobin', 'Apply as a foliar spray every 10-14 days during the infection period.', 'Avoid contact with skin; wash hands thoroughly after use.'],
+            'Gray_Leaf_Spot,Healthy': ['BASF', 'Headline SC', 'Gray Leaf Spot is a fungal disease that affects the leaves of maize.', 'Gray lesions on leaves.', 'Use resistant varieties, rotate crops.', 'Headline SC', 'Pyraclostrobin', 'Apply as a foliar spray every 7-14 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'Bacterial blight': ['Syngenta', 'Kocide 2000', 'Bacterial blight is a common disease affecting various plants, caused by bacteria.', 'Water-soaked lesions on leaves, wilting.', 'Use disease-free seeds, avoid overhead irrigation.', 'Kocide 2000', 'Copper', 'Apply as a foliar spray every 7-10 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'curl_virus': ['Bayer CropScience', 'Confidor 200SL', 'Curl Virus affects cotton plants, causing leaf curling and stunted growth.', 'Leaf curling, stunted growth.', 'Use disease-free seeds, control insect vectors.', 'Confidor 200SL', 'Imidacloprid', 'Apply as a foliar spray every 10-14 days during the infection period.', 'Avoid contact with skin; wash hands thoroughly after use.'],
+            'fussarium_wilt': ['Syngenta', 'Folicur EC', 'Fusarium Wilt is a soil-borne fungal disease that affects a wide range of plants.', 'Yellowing and wilting of leaves, vascular discoloration.', 'Use disease-free seeds, rotate crops.', 'Folicur EC', 'Tebuconazole', 'Apply as a soil drench or foliar spray every 7-14 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'Bacterial_blight': ['Syngenta', 'Kocide 2000', 'Bacterial blight is a common disease affecting various plants, caused by bacteria.', 'Water-soaked lesions on leaves, wilting.', 'Use disease-free seeds, avoid overhead irrigation.', 'Kocide 2000', 'Copper', 'Apply as a foliar spray every 7-10 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'Blast': ['Dow AgroSciences', 'Streptomycin 17WP', 'Blast is a fungal disease that affects rice, causing lesions on leaves and stems.', 'Lesions on leaves and stems, wilting.', 'Use resistant varieties, avoid excessive nitrogen fertilization.', 'Streptomycin 17WP', 'Streptomycin', 'Apply as a foliar spray every 7-10 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'Brownspot': ['BASF', 'Headline SC', 'Brownspot is a fungal disease that affects rice, causing brown lesions on leaves.', 'Brown lesions on leaves.', 'Use resistant varieties, avoid excessive nitrogen fertilization.', 'Headline SC', 'Pyraclostrobin', 'Apply as a foliar spray every 7-14 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'Tungro': ['Bayer CropScience', 'Actara 25WG', 'Tungro is a viral disease that affects rice, causing stunted growth and yellowing of leaves.', 'Stunted growth, yellowing of leaves.', 'Use disease-free seeds, control insect vectors.', 'Actara 25WG', 'Thiamethoxam', 'Apply as a foliar spray every 10-14 days during the infection period.', 'Avoid contact with skin; wash hands thoroughly after use.'],
+            'septoria': ['Monsanto', 'Quadris 2.5 SC', 'Septoria is a fungal disease that affects wheat, causing leaf spots and blight.', 'Leaf spots, blight.', 'Use resistant varieties, rotate crops.', 'Quadris 2.5 SC', 'Azoxystrobin', 'Apply as a foliar spray every 7-14 days during the infection period.', 'Avoid inhalation; wear protective clothing.'],
+            'strip_rust': ['BASF', 'Folicur 430 SC', 'Stripe Rust is a fungal disease that affects wheat, causing yellow stripes on leaves.', 'Yellow stripes on leaves.', 'Use resistant varieties, apply fungicides.', 'Folicur 430 SC', 'Tebuconazole', 'Apply as a foliar spray every 7-14 days during the infection period.', 'Avoid inhalation; wear protective clothing.']
         };
     }
 
@@ -141,9 +141,17 @@ class DiseasePesticideManager {
         if (predictedClass === 'Healthy') {
             return 'No need for any pesticide, plant is healthy';
         }
-        const [company, pesticide] = this.pesticideRecommendations[predictedClass] || [null, "No recommendation available"];
+        const [company, pesticide, info, symptoms, prevention, pesticideName, activeIngredient, application, safety] = this.pesticideRecommendations[predictedClass] || [null, "No recommendation available", "No additional information available", "", "", "", "", "", ""];
         if (company) {
-            return `Company: ${company}, Pesticide: ${pesticide}`;
+            return `
+                <strong>Description:</strong> ${info} <br>
+                <strong>Symptoms:</strong> ${symptoms} <br>
+                <strong>Prevention:</strong> ${prevention} <br>
+                <strong>Pesticide:</strong> ${pesticideName} <br>
+                <strong>Active Ingredients:</strong> ${activeIngredient} <br>
+                <strong>Application:</strong> ${application} <br>
+                <strong>Safety:</strong> ${safety}
+            `;
         }
         return "No recommendation available";
     }
