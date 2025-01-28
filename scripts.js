@@ -117,11 +117,44 @@ function classifyImage(model) {
     }, 1500);
 }
 
-function recommendPesticide(predictedClass) {
-    if (predictedClass === 'Healthy') {
-        return 'No need for any pesticide, plant is healthy';
+class DiseasePesticideManager {
+    constructor() {
+        this.pesticideRecommendations = {
+            'Bacterial Blight': ['Syngenta', 'Copper Fungicide 500'],
+            'Red Rot': ['BASF', 'Mancozeb 80 WP'],
+            'Blight': ['Dow AgroSciences', 'Bravo WeatherStik'],
+            'Common_Rust': ['Monsanto', 'Amistar 250SC'],
+            'Gray_Leaf_Spot,Healthy': ['BASF', 'Headline SC'],
+            'Bacterial blight': ['Syngenta', 'Kocide 2000'],
+            'curl_virus': ['Bayer CropScience', 'Confidor 200SL'],
+            'fussarium_wilt': ['Syngenta', 'Folicur EC'],
+            'Bacterial_blight': ['Syngenta', 'Kocide 2000'],
+            'Blast': ['Dow AgroSciences', 'Streptomycin 17WP'],
+            'Brownspot': ['BASF', 'Headline SC'],
+            'Tungro': ['Bayer CropScience', 'Actara 25WG'],
+            'septoria': ['Monsanto', 'Quadris 2.5 SC'],
+            'strip_rust': ['BASF', 'Folicur 430 SC']
+        };
     }
-    return pesticideRecommendations[predictedClass] || 'No recommendation available';
+
+    getRecommendation(predictedClass) {
+        if (predictedClass === 'Healthy') {
+            return 'No need for any pesticide, plant is healthy';
+        }
+        const [company, pesticide] = this.pesticideRecommendations[predictedClass] || [null, "No recommendation available"];
+        if (company) {
+            return `Company: ${company}, Pesticide: ${pesticide}`;
+        }
+        return "No recommendation available";
+    }
+}
+
+const pesticideManager = new DiseasePesticideManager();
+
+function recommendPesticide(predictedClass) {
+    const originalRecommendation = pesticideRecommendations[predictedClass] || 'No recommendation available';
+    const detailedRecommendation = pesticideManager.getRecommendation(predictedClass);
+    return `${originalRecommendation} <br> ${detailedRecommendation}`;
 }
 
 // Add drag and drop support
