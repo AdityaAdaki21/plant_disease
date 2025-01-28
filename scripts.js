@@ -259,3 +259,18 @@ function handleDrop(e) {
     fileInput.files = files;
     fileInput.dispatchEvent(new Event('change'));
 }
+
+// Theme toggle functionality
+document.getElementById('themeToggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+});
+
+// Load theme from local storage
+window.addEventListener('load', () => {
+    const theme = localStorage.getItem('theme') || 'light';
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+});
