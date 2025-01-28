@@ -114,6 +114,19 @@ function classifyImage(model) {
         
         document.getElementById('result').innerHTML = resultHtml;
         document.getElementById('pesticideRecommendation').innerHTML = pesticideHtml;
+
+        const areaInputHtml = `
+            <div class="farm-area-input">
+                <label for="farmArea">Enter farm area (in acres):</label>
+                <input type="number" id="farmArea" class="form-control" placeholder="e.g., 5">
+                <label for="waterRatio" class="mt-2">Enter water ratio (liters per acre):</label>
+                <input type="number" id="waterRatio" class="form-control" placeholder="e.g., 100">
+                <button class="btn btn-outline-success mt-2" onclick="showPesticideQuantity('${predictedClass}')">Calculate</button>
+            </div>
+            <div id="pesticideQuantity" class="pesticide-quantity"></div>
+        `;
+
+        document.getElementById('pesticideRecommendation').innerHTML += areaInputHtml;
         
         // Re-enable buttons
         buttons.forEach(btn => btn.disabled = false);
@@ -169,6 +182,43 @@ function recommendPesticide(predictedClass) {
     const originalRecommendation = pesticideRecommendations[predictedClass] || 'No recommendation available';
     const detailedRecommendation = pesticideManager.getRecommendation(predictedClass);
     return `${originalRecommendation} <br> ${detailedRecommendation}`;
+}
+
+function calculatePesticideQuantity(predictedClass, area, waterRatio) {
+    const pesticideInfo = pesticideManager.pesticideRecommendations[predictedClass];
+    if (!pesticideInfo) return "No recommendation available";
+
+    const applicationRates = {
+        'Copper': 200, 
+        'Mancozeb': 220, 
+        'Chlorothalonil': 180, 
+        'Azoxystrobin': 250, 
+        'Imidacloprid': 150, 
+        'Thiophanate-methyl': 170, 
+        'Tricyclazole': 200, 
+        'Streptomycin': 190, 
+        'Pyraclostrobin': 210, 
+        'Thiamethoxam': 160, 
+        'Tebuconazole': 230 
+    };
+
+    const activeIngredient = pesticideInfo[6];
+    const applicationRate = applicationRates[activeIngredient] || 10; // Default to 10 ml per acre if not found
+
+    const pesticideQuantity = applicationRate * area;
+    const waterQuantity = waterRatio * area;
+
+    return `
+        <strong>Pesticide Quantity:</strong> ${pesticideQuantity} ml <br>
+        <strong>Water Quantity:</strong> ${waterQuantity} liters
+    `;
+}
+
+function showPesticideQuantity(predictedClass) {
+    const area = document.getElementById('farmArea').value;
+    const waterRatio = document.getElementById('waterRatio').value;
+    const quantityHtml = calculatePesticideQuantity(predictedClass, area, waterRatio);
+    document.getElementById('pesticideQuantity').innerHTML = quantityHtml;
 }
 
 // Add drag and drop support

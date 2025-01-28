@@ -227,3 +227,14 @@ label {
 .card, .btn, .upload-area, .img-preview {
     transition: all 0.3s ease-in-out;
 }
+
+.farm-area-input {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.pesticide-quantity {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #198754;
+}
